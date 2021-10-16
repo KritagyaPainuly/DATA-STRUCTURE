@@ -1,2 +1,2 @@
-# Stack
-Stack implementation in c++
+# DATA STRUCTURE
+Data structure implementation in c/c++
