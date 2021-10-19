@@ -58,13 +58,31 @@ void search(node *list,int val)
     printf("NOT FOUND!!!!\n");
     return;
 }
+void delete(node **list,int val)
+{
+    node *temp=*list;
+    if(temp->data==val)
+    {
+        *list=temp->next;
+        free(temp);
+        display(*list);
+        return;
+    }
+    while(temp->next->data!=val){
+    temp=temp->next;
+    }
+    node *n=temp->next;
+    temp->next=n->next;
+    free(n);
+    display(*list);
 
+}
 int main()
 {
   node *list = NULL;
   while (1)
     {
-      printf ("1 Head\n2 Tail\n3 Display\n4 Search\n5 Exit\n");
+      printf ("1 Head\n2 Tail\n3 Display\n4 Search\n5 Delete\n6 Exit\n");
       int n;
       scanf ("%d", &n);
       switch (n)
@@ -98,8 +116,16 @@ int main()
 	   search(list,val);
 	   break;
 	 }
-	 
 	case 5:
+	{
+	 int val;
+	 printf ("Enter a number\n");
+	 scanf ("%d", &val);
+	 delete(&list,val);
+	 break;
+	}
+	 
+	case 6:
 	  {
 	    return 0;
 	  }
